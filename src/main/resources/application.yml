@@ -1,0 +1,58 @@
+
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/fastcampus_db
+    username: howoogeun
+    password: root7698
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 100
+
+    open-in-view: false
+#    ???? ??????? ??? ??.
+    defer-datasource-initialization: true
+#    data.sql? ?? ??? ????
+    sql.init:
+      mode: none
+#      schema-locations: classpath:/schema.sql
+#      data-locations: classpath:/data.sql
+
+    data.rest:
+      base-path: /api
+      detection-strategy: annotated
+logging.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace
+  com.fastcampus.projectboard: debug
+  org.springframework.web.servlet: debug
+#  ?? ???? ?????.
+  org.hibernate.type.descriptor.sql.BasicBinder: trace
+debug: false
+# actuator? ??? ?? ??? ?? ???? ?? ?? ??? ? ? ? ??.
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+---
+# --- ? ???(yml?? ??? ??? ?? ??????.)
+
+#  ???? ??????? ??? ??.
+spring:
+  config:
+    activate:
+      on-profile: fastcampus_test_db
+  datasource:
+    url: jdbc:mariadb://localhost:3306/fastcampus_test_db
+    driver-class-name: org.mariadb.jdbc.Driver
+  sql:
+    init:
+      mode: always
+#      @Test 의 @AutoConfigureTestDatabase 전역 설정 문제 수정
+  test.database.replace: none
