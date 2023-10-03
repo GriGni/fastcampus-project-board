@@ -23,9 +23,8 @@ import java.util.Set;
         @Index(columnList = "createdBy"),
 })
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@EntityListeners(AuditingEntityListener.class)
 @Entity
-public class Article {
+public class Article extends AuditingFields {
 
     /**
      * 식별자
@@ -56,34 +55,6 @@ public class Article {
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>(); // 리시트 및 set 으로 하는 경우가 있다. (중복 허용 안한다.)
 
-    /**
-     * 메타 데이터
-     */
-
-    /**
-     * 생성 일시
-     */
-    @CreatedDate
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
-    /**
-     * 생성자
-     */
-    @CreatedBy
-    @Column(nullable = false, length = 100)
-    private String createdBy;
-    /**
-     * 수정 일시
-     */
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime modifiedAt;
-    /**
-     * 수정자
-     */
-    @LastModifiedBy
-    @Column(nullable = false, length = 100)
-    private String modifiedBy;
 
     private Article(String title, String content, String hashtag) {
         this.title = title;
