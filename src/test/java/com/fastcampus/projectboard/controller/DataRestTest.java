@@ -25,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class DataRestTest {
 
     private final MockMvc mvc;
+    // repository를 mocking해서 가져올 수 있다.(spring data rest가 아닐 경우 가능)
 
     public DataRestTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
