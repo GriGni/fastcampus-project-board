@@ -25,9 +25,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.data:spring-data-rest-hal-explorer' // 만든 api 시각적으로 및 웹으로 볼 수 있게 도와준다.
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-	runtimeOnly 'com.h2database:h2'
 	compileOnly 'org.projectlombok:lombok'
 	implementation "org.mariadb.jdbc:mariadb-java-client:2.7.3"
 
