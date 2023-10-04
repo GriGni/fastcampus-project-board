@@ -1,5 +1,14 @@
 
 spring:
+  data:
+    rest:
+      base-path: /api
+      detection-strategy: annotated
+  sql:
+    init:
+      #      schema-locations: classpath:/schema.sql
+      data-locations: classpath:/data.sql
+      mode: always
   datasource:
     url: jdbc:mariadb://localhost:3306/fastcampus_db
     username: howoogeun
@@ -13,19 +22,8 @@ spring:
         show_sql: true
         format_sql: true
         default_batch_fetch_size: 100
-
     open-in-view: false
-#    ???? ??????? ??? ??.
     defer-datasource-initialization: true
-#    data.sql? ?? ??? ????
-    sql.init:
-      mode: none
-#      schema-locations: classpath:/schema.sql
-#      data-locations: classpath:/data.sql
-
-    data.rest:
-      base-path: /api
-      detection-strategy: annotated
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
